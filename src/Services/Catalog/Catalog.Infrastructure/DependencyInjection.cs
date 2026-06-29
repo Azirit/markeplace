@@ -1,4 +1,5 @@
 using Catalog.Infrastructure.Data.Seed;
+using Catalog.Infrastructure.Repositories;
 using Marten;
 
 namespace Catalog.Infrastructure;
@@ -16,6 +17,10 @@ public static class DependencyInjection
         })
         .UseLightweightSessions()
         .InitializeWith(new[] { new InitializeDatabaseAsync() });
+
+        services.AddScoped<IBrandRepository, CatalogRepository>();
+        services.AddScoped<ICategoryRepository, CatalogRepository>();
+        services.AddScoped<ICatalogItemRepository, CatalogRepository>();
 
         return services;
     }

@@ -2,28 +2,6 @@ namespace Catalog.Infrastructure.Data.Seed;
 
 public static class InitialData
 {
-    private static readonly Brand Apple = Brands.ElementAt(0);
-    private static readonly Brand Samsung = Brands.ElementAt(1);
-    private static readonly Brand Xiaomi = Brands.ElementAt(2);
-    private static readonly Brand Huawei = Brands.ElementAt(3);
-    private static readonly Brand Sony = Brands.ElementAt(4);
-    private static readonly Brand Lg = Brands.ElementAt(5);
-    private static readonly Brand Lenovo = Brands.ElementAt(6);
-    private static readonly Brand Asus = Brands.ElementAt(7);
-    private static readonly Brand Dell = Brands.ElementAt(8);
-    private static readonly Brand Hp = Brands.ElementAt(9);
-
-    private static readonly Category Laptops = Categories.ElementAt(0);
-    private static readonly Category Smartphones = Categories.ElementAt(1);
-    private static readonly Category Tablets = Categories.ElementAt(2);
-    private static readonly Category Monitors = Categories.ElementAt(3);
-    private static readonly Category Keyboards = Categories.ElementAt(4);
-    private static readonly Category Mice = Categories.ElementAt(5);
-    private static readonly Category Headphones = Categories.ElementAt(6);
-    private static readonly Category Smartwatches = Categories.ElementAt(7);
-    private static readonly Category Cameras = Categories.ElementAt(8);
-    private static readonly Category Accessories = Categories.ElementAt(9);
-
     public static IEnumerable<Brand> Brands { get; } = [
         new() { Id = Guid.Parse("a1b2c3d4-1111-1111-1111-111111111111"), Title = "Apple" },
         new() { Id = Guid.Parse("a1b2c3d4-2222-2222-2222-222222222222"), Title = "Samsung" },
@@ -49,6 +27,28 @@ public static class InitialData
         new() { Id = Guid.Parse("b2c3d4a1-9999-9999-9999-999999999999"), Title = "Cameras" },
         new() { Id = Guid.Parse("b2c3d4a1-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), Title = "Accessories" },
     ];
+
+    private static Brand Apple => Brands.ElementAt(0)!;
+    private static Brand Samsung => Brands.ElementAt(1)!;
+    private static Brand Xiaomi => Brands.ElementAt(2)!;
+    private static Brand Huawei => Brands.ElementAt(3)!;
+    private static Brand Sony => Brands.ElementAt(4)!;
+    private static Brand Lg => Brands.ElementAt(5)!;
+    private static Brand Lenovo => Brands.ElementAt(6)!;
+    private static Brand Asus => Brands.ElementAt(7)!;
+    private static Brand Dell => Brands.ElementAt(8)!;
+    private static Brand Hp => Brands.ElementAt(9)!;
+
+    private static Category Laptops => Categories.ElementAt(0)!;
+    private static Category Smartphones => Categories.ElementAt(1)!;
+    private static Category Tablets => Categories.ElementAt(2)!;
+    private static Category Monitors => Categories.ElementAt(3)!;
+    private static Category Keyboards => Categories.ElementAt(4)!;
+    private static Category Mice => Categories.ElementAt(5)!;
+    private static Category Headphones => Categories.ElementAt(6)!;
+    private static Category Smartwatches => Categories.ElementAt(7)!;
+    private static Category Cameras => Categories.ElementAt(8)!;
+    private static Category Accessories => Categories.ElementAt(9)!;
 
     public static IEnumerable<CatalogItem> CatalogItems =>
     [

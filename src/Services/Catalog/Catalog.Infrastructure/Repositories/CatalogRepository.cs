@@ -2,46 +2,54 @@ using Marten;
 
 namespace Catalog.Infrastructure.Repositories;
 
-public class CatalogRepository(IDocumentSession session) : IBrandRepository, ICategoryRepository, ICatalogItemRepository
+public class CatalogRepository(IDocumentSession session)
+    : IBrandRepository, ICategoryRepository, ICatalogItemRepository
 {
-    public async Task<IEnumerable<Brand>> GetAllAsync() => await session.Query<Brand>().ToListAsync();
+    // Get all
+    public async Task<IEnumerable<Brand>> GetAllAsync() =>
+        await session.Query<Brand>().ToListAsync();
+
+    async Task<IEnumerable<Category>> ICategoryRepository.GetAllAsync() =>
+        await session.Query<Category>().ToListAsync();
+
+    async Task<IEnumerable<CatalogItem>> ICatalogItemRepository.GetAllAsync() =>
+        await session.Query<CatalogItem>().ToListAsync();
+
+    // Get by criteria
+    public async Task<CatalogItem?> GetCatalogItemAsync(Guid id) =>
+        await session.LoadAsync<CatalogItem>(id);
+
+    public async Task<IEnumerable<CatalogItem>> GetCatalogItemsByTitleAsync(string title) =>
+        await session.Query<CatalogItem>()
+            .Where(c => c.Title!.Contains(title))
+            .ToListAsync();
+
+    public async Task<IEnumerable<CatalogItem>> GetCatalogItemsByBrandAsync(string brandTitle) =>
+        await session.Query<CatalogItem>()
+            .Where(c => c.Brand!.Title == brandTitle)
+            .ToListAsync();
+
+    // Create
     public async Task<CatalogItem> CreateCatalogItemAsync(CatalogItem item)
     {
-        throw new NotImplementedException();
+        session.Store(item);
+        await session.SaveChangesAsync();
+        return item;
     }
 
-    public Task<bool> DeleteCatalogItemAsync(Guid id)
+    // Update
+    public async Task<bool> UpdateCatalogItemAsync(CatalogItem item)
     {
-        throw new NotImplementedException();
+        session.Update(item);
+        await session.SaveChangesAsync();
+        return true;
     }
 
-    public Task<IEnumerable<CatalogItem>> GetAllCatalogItemsAsync()
+    // Delete
+    public async Task<bool> DeleteCatalogItemAsync(Guid id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<CatalogItem?> GetCatalogItemAsync(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<IEnumerable<CatalogItem>> GetCatalogItemsByBrandAsync(string brandTitle)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<IEnumerable<CatalogItem>> GetCatalogItemsByTitleAsync(string title)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> UpdateCatalogItemAsync(CatalogItem item)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<IEnumerable<CatalogItem>> ICatalogItemRepository.GetAllAsync()
-    {
-        throw new NotImplementedException();
+        session.Delete<CatalogItem>(id);
+        await session.SaveChangesAsync();
+        return true;
     }
 }
