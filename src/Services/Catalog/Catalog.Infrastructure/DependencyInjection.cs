@@ -1,3 +1,6 @@
+using Catalog.Infrastructure.Data.Seed;
+using Marten;
+
 namespace Catalog.Infrastructure;
 
 public static class DependencyInjection
@@ -7,6 +10,13 @@ public static class DependencyInjection
         IConfiguration configuration
     )
     {
+        services.AddMarten(options =>
+        {
+            options.Connection(configuration.GetConnectionString("PostgreSQL")!);
+        })
+        .UseLightweightSessions()
+        .InitializeWith(new[] { new InitializeDatabaseAsync() });
+
         return services;
     }
 }
