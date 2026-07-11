@@ -1,3 +1,5 @@
+using Catalog.Application.Queries.BrandQueries;
+
 namespace Catalog.Api;
 
 public static class DependencyInjection
@@ -7,13 +9,26 @@ public static class DependencyInjection
         IConfiguration configuration
     )
     {
+        services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+
+        var assembly = typeof(GetBrandsQuery).Assembly;
+
+        var licenseKey = configuration.GetSection("MediatR:LicenseKey").Value;
+
+        services.AddMediatR(config =>
+        {
+            config.LicenseKey = licenseKey;
+            config.RegisterServicesFromAssemblies(assembly);
+        });
+
         return services;
     }
 
     public static WebApplication UseApiServices(this WebApplication app)
     {
+        app.MapControllers();
         if (true || app.Environment.IsDevelopment())
         {
             app.UseSwagger();
