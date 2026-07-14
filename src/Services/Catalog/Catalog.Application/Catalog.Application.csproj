@@ -1,6 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Compile Remove="Handlers\CategoryItemHandlers\**" />
+    <EmbeddedResource Remove="Handlers\CategoryItemHandlers\**" />
+    <None Remove="Handlers\CategoryItemHandlers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
   </ItemGroup>
 
