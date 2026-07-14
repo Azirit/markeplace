@@ -2,7 +2,7 @@ using Catalog.Application.Queries.CategoryQueries;
 using Catalog.Application.Responses.CategoryResponses;
 using Catalog.Domain.Entities;
 
-namespace Catalog.Application.Handlers.CategoryHandlers;
+namespace Catalog.Application.Handlers.CategoryHandler;
 
 public class GetCategoriesQueryHandler(ICategoryRepository categoryRepository) : IRequestHandler<GetCategoriesQuery, GetCategoriesResult>
 {

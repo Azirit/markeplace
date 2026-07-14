@@ -54,6 +54,7 @@
 ## Code review & typos
 - Когда я прошу сделать ревью, или ты читаешь код и видишь опечатку / неправильное написание английского слова — просто укажи на это.
 - При ревью кода参照 `CODE_REVIEW.md` — там описаны naming conventions, code style и common mistakes.
+- При работе с CQRS参照 `CQRS_RULES.md` — там описаны naming conventions для Query/Command/Handler.
 
 ## Branch naming
 - Ветки создавай по схеме: `<type>/TASK-<number>_<english-title>`
