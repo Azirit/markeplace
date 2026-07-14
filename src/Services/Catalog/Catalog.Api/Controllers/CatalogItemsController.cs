@@ -11,4 +11,9 @@ public class CatalogItemsController : ApiController
     [ProducesResponseType(typeof(GetCatalogItemsResult), (int)HttpStatusCode.OK)]
     public async Task<ActionResult<GetCatalogItemsResult>> GetAll()
         => Ok(await Mediator.Send(new GetCatalogItemsQuery()));
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(GetCatalogItemByIdResult), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<GetCatalogItemByIdResult>> GetById(Guid id)
+    => Ok(await Mediator.Send(new GetCatalogItemByIdQuery(id)));
 }

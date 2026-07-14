@@ -2,7 +2,7 @@ using Catalog.Application.Queries.BrandQueries;
 using Catalog.Application.Responses.BrandResponses;
 using Catalog.Domain.Entities;
 
-namespace Catalog.Application.Handlers.BrandHandlers;
+namespace Catalog.Application.Handlers.BrandHandler;
 
 
 public class GetBrandsQueryHandler(IBrandRepository brandRepository) : IRequestHandler<GetBrandsQuery, GetBrandsResult>

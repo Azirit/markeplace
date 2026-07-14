@@ -2,7 +2,7 @@ using Catalog.Application.Queries.CatalogItemQueries;
 using Catalog.Application.Responses.CatalogItemResponses;
 using Catalog.Domain.Entities;
 
-namespace Catalog.Application.Handlers.CatalogItemHandlers;
+namespace Catalog.Application.Handlers.CatalogItemHandler;
 
 public class GetCatalogItemsQueryHandler(ICatalogItemRepository catalogItemRepository) : IRequestHandler<GetCatalogItemsQuery, GetCatalogItemsResult>
 {
