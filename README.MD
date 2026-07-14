@@ -1,4 +1,4 @@
-# https://stepik.org/lesson/1938783/step/1?unit=1965519
+# https://stepik.org/lesson/1938783/step/2?unit=1965519
 # Marketplace
 
 Online marketplace built with Clean Architecture (.NET 10).

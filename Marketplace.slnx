@@ -3,6 +3,8 @@
     <File Path=".gitignore" />
     <File Path="docker-compose-dev.yaml" />
     <File Path="README.MD" />
+    <File Path="src/Services/Catalog/AGENTS.md" />
+    <File Path="src/Services/Catalog/CODE_REVIEW.md" />
   </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/Services/" />
