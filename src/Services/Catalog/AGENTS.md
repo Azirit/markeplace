@@ -31,6 +31,11 @@
 - Если в файлах встречаются другие имена автора — предложи заменить на Sergey Zalygin.
 - Если нужно где-то указать автора — ставь Sergey Zalygin без лишних вопросов.
 
+## PowerShell rules
+- **Запуск GUI-приложений** (devenv.exe, explorer.exe и т.п.) — всегда через `Start-Process`, а НЕ через `& "path\to\exe"`.
+- Команда `& "path\to\exe"` блокирует шел до закрытия приложения — висит и не даёт выполнить следующие шаги.
+- Пример: `Start-Process "C:\...\devenv.exe" -ArgumentList """C:\...\file.slnx"""`
+
 ## Scope of work
 - Выполняй только то, что явно попросили.
 - Если задача выходит за рамки запроса — сначала спроси у меня, нужно ли это делать.
@@ -121,6 +126,11 @@ Develop a full Clean Architecture course project — an online marketplace (Mark
 - Global usings in `Catalog.Domain` are only visible within Domain project — Application/Infrastructure need their own if consuming Domain types
 - Session memory is not persisted across restarts — `AGENTS.md` and git history serve as the persistent context
 - The Capi template (package `zalsergey.cleanarchitecture.template`) is installed and functional
+
+## Environment setup notes
+- GUI-приложения (devenv.exe, dbeaver.exe, explorer.exe) запускать через `Start-Process`
+- DBeaver: `C:\Program Files\DBeaver\dbeaver.exe`
+- Visual Studio 2026 Professional: `C:\Program Files\Microsoft Visual Studio\18\Professional\Common7\IDE\devenv.exe`
 
 ## Relevant Files
 - `Marketplace/README.MD`: project overview
