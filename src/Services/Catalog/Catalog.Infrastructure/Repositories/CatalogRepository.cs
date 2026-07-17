@@ -48,7 +48,12 @@ public class CatalogRepository(IDocumentSession session)
     // Delete
     public async Task<bool> DeleteCatalogItemAsync(Guid id)
     {
-        session.Delete<CatalogItem>(id);
+        var item = await session.LoadAsync<CatalogItem>(id);
+
+        if (item is null)
+            return false;
+
+        session.Delete(item);
         await session.SaveChangesAsync();
         return true;
     }
